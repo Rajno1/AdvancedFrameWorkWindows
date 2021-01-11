@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+    <listeners>
+        <listener class-name="com.issi.listeners.listenerClass"/>
+        <listener class-name="com.issi.listeners.MethodInterceptor"/> <!--it will execute only sepcified testcase-->
+        <listener class-name="com.issi.listeners.AnnotationTransformer"/>
+    </listeners>
+    <test verbose="1" parallel="methods" preserve-order="true" name="Test">
+        <classes>
+            <!-- <methods><include name="test1"/></methods>
+            <class name="com.issi.tests.LoginPageTest">
+            </class> -->
+
+            <class name="com.issi.tests.LoginPageTest"></class>
+            <class name="com.issi.tests.AmazonDemoTest"></class>
+
+        </classes>
+    </test>
+</suite>

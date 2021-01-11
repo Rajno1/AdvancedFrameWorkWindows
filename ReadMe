@@ -1,0 +1,8 @@
+Create a Maven Project
+Update pom.xml file with required dependencies
+under src/test/java we have following packages
+'com.issi.test' with
+Add SonarLint plugin to your IDE to avoid issue while runnig parallel execution
+and to create ThreadLocal variables.
+
+Dataprovider is common for all tests

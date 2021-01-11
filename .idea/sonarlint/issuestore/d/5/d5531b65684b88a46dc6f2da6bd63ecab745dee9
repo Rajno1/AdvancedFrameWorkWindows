@@ -1,0 +1,8 @@
+
+Z	java:S112+"FDefine and throw a dedicated exception instead of using a generic one.(ะสตH
+W
+java:S22590"AA "NullPointerException" could be thrown; "key" is nullable here.(ท’ษ
+j
+java:S3008"TRename this field "CONFIGMAP" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(อผ๚
+Z
+java:S2147#"DCombine this catch with the one at line 33, which has the same body.(๏ญฃฤ
