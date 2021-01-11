@@ -12,11 +12,11 @@ import java.util.List;
 import java.util.Map;
 
 public class MethodInterceptor implements IMethodInterceptor {
-    // this MethodInterceptor class will execute only once for entari suite
+    // this MethodInterceptor class will execute only once for entire suite
     @Override
     public List<IMethodInstance> intercept(List<IMethodInstance> methods, ITestContext context) {
 
-        /* the 'method' argument of 'List<IMethodInstance>' will contain all test that TestNG goint to execute
+        /** the 'method' argument of 'List<IMethodInstance>' will contain all test that TestNG goint to execute
         in below line we have created a result object to customise to run only perticular
         test case at runtime
         Note: if you want to execute all testcases without any interrupt directly you can return method

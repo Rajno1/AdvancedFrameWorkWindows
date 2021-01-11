@@ -14,25 +14,24 @@ import org.openqa.selenium.ie.InternetExplorerOptions;
 import java.util.Objects;
 
 public final class Driver {
+    // we are initiating and close the browser in this class
     private Driver() {
     }
 
     /**
-     * since we are using Thread local variable for webdriver
-     * we are declaring below static driver reference as 'private'
+     * we are launching the browser using intDriver() method
+     * @param browser - browser value { browser will be launch based on your browser value}
      */
-
-
     public static void initDriver(String browser) {
         if (Objects.isNull(DriverManager.getDriver())) {
 
-            if (browser.equalsIgnoreCase("chrome")){
+            if (browser.equalsIgnoreCase("chrome")) {
                 ChromeOptions options = new ChromeOptions();
                 options.addArguments("--incognito");
                 System.setProperty("webdriver.chrome.driver", FrameWorkConstants.getChromeDriverPath());
-                 System.setProperty("webdriver.chrome.silentOutput","true");  // to suppress warnings in console while running.
+                System.setProperty("webdriver.chrome.silentOutput", "true");  // to suppress warnings in console while running.
                 DriverManager.setDriver(new ChromeDriver(options)); // we can initiate chrome driver in this way as well
-            } else if (browser.equalsIgnoreCase("firefox")){
+            } else if (browser.equalsIgnoreCase("firefox")) {
                 FirefoxOptions options = new FirefoxOptions();
                 options.addArguments("-private");
 
@@ -56,10 +55,10 @@ public final class Driver {
     }
 
     /**
-     * in this method to set driver value as null
-     * we are using 'unload()' recomanded by 'SonarLint plugin'
-     * this method will remove threadlocal variable (dr) value.
+     * we are closing the browser using quiteDriver() method
+     * 'unload()' method is recommended by 'SonarLint plugin' to have a clean quit of driver.
      */
+
     public static void quiteDriver() {
         if (Objects.nonNull(DriverManager.getDriver())) {
             DriverManager.getDriver().quit();

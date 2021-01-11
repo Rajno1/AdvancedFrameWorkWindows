@@ -8,6 +8,8 @@ public final class FrameWorkConstants {
      * To avoid hardcoding we have created this class
      * and we declared it as 'final' to not extend this class
      * also created 'private constructor' to restrict not to create an object for this class
+     *
+     * This class contains constant values and its caller methods
      */
 
     private FrameWorkConstants() {

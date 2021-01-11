@@ -1,13 +1,13 @@
 package com.issi.listeners;
 
-import com.aventstack.extentreports.markuputils.ExtentColor;
-import com.aventstack.extentreports.markuputils.MarkupHelper;
 import com.issi.annotations.FrameWorkAnnotation;
 import com.issi.reports.ExtentLogger;
 import com.issi.reports.ExtentReport;
 import org.testng.*;
 
-import java.util.Arrays;
+/**
+ * this listeners class is defined to perform specific behaviour before and after the script execution
+ */
 
 public class listenerClass implements ITestListener, ISuiteListener {
     @Override
@@ -34,7 +34,7 @@ public class listenerClass implements ITestListener, ISuiteListener {
 
     @Override
     public void onTestSuccess(ITestResult result) {
-        //ExtentLogger.pass(MarkupHelper.createLabel(result.getMethod().getMethodName()+" is passed "),false);
+
         ExtentLogger.pass(result.getMethod().getMethodName() + " is passed ", false);
     }
 

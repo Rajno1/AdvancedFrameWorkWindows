@@ -7,9 +7,8 @@ public final class DriverManager {
     }
 
     /**
-     * Here we are creating ThreadLocal variable for WebDriver
-     * and creating 3 methods like 'dr.get()', dr.set(driverref) and remove()
-     * methods to make use of it.
+     * Here we are creating ThreadLocal variable for WebDriver, to avoid thread issue on parallel execution
+     * and created 3 methods like 'getDriver()', 'setDriver(driverref)' and unload() to make use for driver reference.
      */
 
     private static ThreadLocal<WebDriver> dr = new ThreadLocal<>();

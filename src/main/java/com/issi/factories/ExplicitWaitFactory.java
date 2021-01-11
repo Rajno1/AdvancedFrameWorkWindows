@@ -9,6 +9,12 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class ExplicitWaitFactory {
+    /**
+     * It will perform explicit-wait on specific element with defined wait strategy.
+     * @param by - target element
+     * @param waitstrategy - wait strategy that we want to apply
+     * @return - returns webElement
+     */
     public static WebElement performExplicitWait( By by,WaitStrategy waitstrategy) {
 
         WebElement element = null;
