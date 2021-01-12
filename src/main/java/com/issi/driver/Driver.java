@@ -2,7 +2,6 @@ package com.issi.driver;
 
 import com.issi.constants.FrameWorkConstants;
 import com.issi.enums.ConfigProperties;
-import com.issi.reports.ExtentLogger;
 import com.issi.utils.PropertyUtils;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -26,16 +25,20 @@ public final class Driver {
         if (Objects.isNull(DriverManager.getDriver())) {
 
             if (browser.equalsIgnoreCase("chrome")) {
+
                 ChromeOptions options = new ChromeOptions();
-                options.addArguments("--incognito");
+                options.addArguments("--incognito");  // will run chrome in private mode
+                options.addArguments("start-maximized"); // it will maxize the browser
+
                 System.setProperty("webdriver.chrome.driver", FrameWorkConstants.getChromeDriverPath());
-                System.setProperty("webdriver.chrome.silentOutput", "true");  // to suppress warnings in console while running.
                 DriverManager.setDriver(new ChromeDriver(options)); // we can initiate chrome driver in this way as well
             } else if (browser.equalsIgnoreCase("firefox")) {
                 FirefoxOptions options = new FirefoxOptions();
                 options.addArguments("-private");
+                options.addArguments("start-maximized");
 
                 System.setProperty("webdriver.gecko.driver", FrameWorkConstants.getGeckoDriverPath());
+
                 DriverManager.setDriver(new FirefoxDriver(options));
             } else if (browser.equalsIgnoreCase("ie")) {
                 InternetExplorerOptions ieOptions = new InternetExplorerOptions();
@@ -46,7 +49,6 @@ public final class Driver {
 
             }
 
-            DriverManager.getDriver().manage().window().maximize(); //Maximize browser
             DriverManager.getDriver().manage().deleteAllCookies(); //Delete all cookies
 
             DriverManager.getDriver().get(PropertyUtils.getValue(ConfigProperties.URL));
