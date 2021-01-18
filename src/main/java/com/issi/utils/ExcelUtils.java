@@ -44,7 +44,7 @@ public final class ExcelUtils {
                 list.add(map);
             }
         } catch (FileNotFoundException e) {
-            throw new InvalidExcelPathException("Excel file you are trying to read is not found");
+            throw new InvalidExcelPathException("Excel file you are trying to read is not found, Please check your file path");
             /**
              * with the help of above line we are throwing runtime exception
              * so it will terminate the program immediately after exception

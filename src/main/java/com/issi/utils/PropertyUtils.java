@@ -19,13 +19,12 @@ public final class PropertyUtils {
     private static Properties property = new Properties();
     private static final Map<String, String> CONFIGMAP = new HashMap<>();
 
-    // here we are using static block
+    /* Here we are using static block, to initialize static variables,
+       this block will get execute when the class is loaded in the memory */
     static {
         try ( FileInputStream file = new FileInputStream(FrameWorkConstants.getConfigFilePath())){
             // Here we are fetching all the values from property file
-
             property.load(file);
-
             for (Map.Entry<Object,Object> entry: property.entrySet()){  // we are iterating property file
                 CONFIGMAP.put(String.valueOf(entry.getKey()),String.valueOf(entry.getValue()).trim());
                 // in above line we are adding property file to the HashMap at line num 18 and for value we are avoiding white spaces using 'trim()'

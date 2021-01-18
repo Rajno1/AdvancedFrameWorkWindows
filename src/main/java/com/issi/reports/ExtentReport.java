@@ -6,6 +6,8 @@ import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 import com.aventstack.extentreports.reporter.configuration.ViewName;
 import com.issi.constants.FrameWorkConstants;
 import com.issi.enums.CategoryType;
+import com.issi.exceptions.FrameWorkExceptions;
+import net.bytebuddy.implementation.bytecode.Throw;
 
 import java.awt.*;
 import java.io.File;
@@ -51,7 +53,8 @@ public final class ExtentReport {
                 Desktop.getDesktop().browse(new File(FrameWorkConstants.getExtentReportFilePath()).toURI());
                 //  SendEmailWithAttachment.mailTheReport();
             } catch (IOException e) {
-                e.printStackTrace();
+                throw new FrameWorkExceptions("Some IO Exception happen while launching extent report on default browser");
+              //  e.printStackTrace();
             }
         }
     }
