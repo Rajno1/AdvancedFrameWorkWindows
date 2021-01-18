@@ -1,6 +1,9 @@
 package com.issi.utils;
 
 import com.issi.constants.FrameWorkConstants;
+import com.issi.exceptions.FrameWorkExceptions;
+import com.issi.exceptions.InvalidExcelPathException;
+import net.bytebuddy.implementation.bytecode.Throw;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
@@ -15,9 +18,12 @@ public final class ExcelUtils {
     public static List<Map<String,String>> getTestDetails(String sheetName) {
         List<Map<String, String>> list = null;
 
-        FileInputStream fs = null;
-        try {
-            fs = new FileInputStream(FrameWorkConstants.getExcelPath());
+        /**
+         *  Here we are using try-with-resources to close the input file
+         *  by passing input file as an argument to the try block, it helps to avoid creating finally block
+         *  for closing the file.
+         */
+        try(FileInputStream fs = new FileInputStream(FrameWorkConstants.getExcelPath())) {
             XSSFWorkbook workbook = new XSSFWorkbook(fs);
             XSSFSheet sheet = workbook.getSheet(sheetName);
 
@@ -37,20 +43,14 @@ public final class ExcelUtils {
                 }
                 list.add(map);
             }
-
         } catch (FileNotFoundException e) {
-            e.printStackTrace();
+            throw new InvalidExcelPathException("Excel file you are trying to read is not found");
+            /**
+             * with the help of above line we are throwing runtime exception
+             * so it will terminate the program immediately after exception
+             */
         } catch (IOException e) {
-            e.printStackTrace();
-        }
-        finally {
-            try {
-                if (Objects.nonNull(fs)) {
-                    fs.close();
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            throw new FrameWorkExceptions("Some IO Exception happen while reading data from excel");
         }
         return list;
     }
